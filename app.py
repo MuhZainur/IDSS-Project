@@ -220,8 +220,8 @@ tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
 with tab1:
     st.subheader("1. Criteria List")
     st.caption(
-        "Code, name, and direction are fixed and cannot be changed. Only `batas_min` / "
-        "`batas_maks` (min/max threshold) can be edited — optional, used as a *feasibility gate* "
+        "Code, name, and direction are fixed and cannot be changed. Only `Min_Threshold` / "
+        "`Max_Threshold` (min/max threshold) can be edited — optional, used as a *feasibility gate* "
         "(alternatives that violate the threshold are automatically excluded from the calculation). "
         "Leave blank if there is no threshold."
     )
