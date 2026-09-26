@@ -12,6 +12,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
+from calc_steps import show_saw_steps, show_topsis_steps, show_wp_steps
+
 # ======================================================================================
 # PAGE CONFIG
 # ======================================================================================
@@ -388,6 +390,8 @@ with tab3:
     fig_decomp.update_layout(yaxis_title="", height=90 + 45 * len(decomp))
     st.plotly_chart(fig_decomp, use_container_width=True)
 
+    show_saw_steps(matrix, weights, criteria_direction, alt_names, saw_scores)
+
 # ======================================================================================
 # TAB 4 — TOPSIS
 # ======================================================================================
@@ -411,6 +415,8 @@ with tab4:
     with st.expander("View positive ideal (A*) & negative ideal (A') solutions"):
         st.dataframe(pd.DataFrame({"A* (positive ideal)": topsis_apos, "A' (negative ideal)": topsis_aneg}), use_container_width=True)
 
+    show_topsis_steps(matrix, weights, criteria_direction, alt_names, topsis_scores)
+
 # ======================================================================================
 # TAB 5 — WEIGHTED PRODUCT
 # ======================================================================================
@@ -427,6 +433,8 @@ with tab5:
         st.success(f"🏆 WP Winner: **{wp_winner} — {alt_names[wp_winner]}** (score {wp_scores[wp_winner]:.4f})")
 
         st.plotly_chart(ranked_bar(wp_scores, alt_names, wp_winner, "WP Score (V)", "Weighted Product Ranking"), use_container_width=True)
+
+    show_wp_steps(matrix, weights, criteria_direction, alt_names, wp_scores, wp_error)
 
 # ======================================================================================
 # TAB 6 — COMPARISON DASHBOARD
